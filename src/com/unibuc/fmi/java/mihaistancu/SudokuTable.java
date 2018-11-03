@@ -43,18 +43,34 @@ public class SudokuTable {
         NumberOfOccurences no = new NumberOfOccurences();
         for (int i = 0; i < 9; i++)
         {
-            System.out.println(this.validTable[rowNumber][i]);
             no.add(this.table[rowNumber][i]);
         }
         return no.isValid();
     }
 
+    // Checks if a given column in the table is valid
     private boolean isColumnValid(int colNumber) {
         NumberOfOccurences no = new NumberOfOccurences();
         for (int i = 0; i < 9; i++)
         {
-            System.out.println(this.validTable[i][colNumber]);
             no.add(this.table[i][colNumber]);
+        }
+        return no.isValid();
+    }
+
+    // Checks if a given box in the table is valid
+    private boolean isBoxValid(int boxNumber) {
+        int firsti = (boxNumber / 3) * 3;
+        int firstj = boxNumber % 3;
+        int lasti = firsti + 3;
+        int lastj  = firstj + 3;
+        NumberOfOccurences no = new NumberOfOccurences();
+        for (int i = firsti; i < lasti; i++)
+        {
+            for (int j = firstj; j < lastj; j++)
+            {
+                no.add(this.validTable[i][j]);
+            }
         }
         return no.isValid();
     }
