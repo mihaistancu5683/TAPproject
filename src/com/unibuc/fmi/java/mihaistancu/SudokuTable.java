@@ -38,6 +38,17 @@ public class SudokuTable {
         table.create();
     }
 
+    // Checks if a given row in the table is valid
+    private boolean isRowValid(int rowNumber) {
+        NumberOfOccurences no = new NumberOfOccurences();
+        for (int value : this.table[rowNumber])
+        {
+            no.add(value);
+        }
+        return no.isValid();
+    }
+
+    // Generates random integer in a given range
     private int generateRandomIntIntRange(int min, int max) {
         Random r = new Random();
         return r.nextInt((max - min) + 1) + min;
