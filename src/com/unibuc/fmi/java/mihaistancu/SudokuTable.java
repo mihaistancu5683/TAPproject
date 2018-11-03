@@ -60,15 +60,28 @@ public class SudokuTable {
 
     // Checks if a given box in the table is valid
     private boolean isBoxValid(int boxNumber) {
+        // boxNumber  first i  first j
+        //     0         0        0
+        //     1         0        3
+        //     2         0        6
+        //     3         3        0
+        //     4         3        3
+        //     5         3        6
+        //     6         6        0
+        //     7         6        3
+        //     8         6        6
         int firsti = (boxNumber / 3) * 3;
         int firstj = (boxNumber % 3) * 3;
         int lasti = firsti + 3;
         int lastj  = firstj + 3;
+        //System.out.println("first i=" + firsti);
+        //System.out.println("first j=" + firstj);
         NumberOfOccurences no = new NumberOfOccurences();
         for (int i = firsti; i < lasti; i++)
         {
             for (int j = firstj; j < lastj; j++)
             {
+                //System.out.println("i=" + i + " j=" + j + " val="  +this.solvedTable[i][j]);
                 no.add(this.table[i][j]);
             }
         }
