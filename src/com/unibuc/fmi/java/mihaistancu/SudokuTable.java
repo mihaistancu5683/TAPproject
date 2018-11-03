@@ -5,8 +5,6 @@ import java.util.Random;
 public class SudokuTable {
     private int[][] table;
 
-    private boolean verboseMode = true;
-
     public void SudokuTable() {
         for (int i = 0; i < 9; i++)
         {
@@ -140,9 +138,6 @@ public class SudokuTable {
         int value = generateRandomIntIntRange(1, 9);
         int line = generateRandomIntIntRange(0, 8);
         int column = generateRandomIntIntRange(0, 8);
-        if(this.verboseMode){
-            System.out.println("Placing the value " + value + " at line " + line + " and column " + column + "\n");
-        }
         return true;
     }
 
