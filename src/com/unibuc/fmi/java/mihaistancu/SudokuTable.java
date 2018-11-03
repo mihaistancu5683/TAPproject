@@ -46,6 +46,20 @@ public class SudokuTable {
 
     private boolean verboseMode = true;
 
+    public void SudokuTable() {
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                this.table[i][j] = 0;
+            }
+        }
+    }
+
+    public void SudokuTable(int[][] newTable) {
+        this.table = newTable;
+    }
+
     public static void main(String[] args) {
         SudokuTable table = new SudokuTable();
         table.create();
