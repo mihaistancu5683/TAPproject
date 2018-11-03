@@ -41,9 +41,20 @@ public class SudokuTable {
     // Checks if a given row in the table is valid
     private boolean isRowValid(int rowNumber) {
         NumberOfOccurences no = new NumberOfOccurences();
-        for (int value : this.table[rowNumber])
+        for (int i = 0; i < 9; i++)
         {
-            no.add(value);
+            System.out.println(this.validTable[rowNumber][i]);
+            no.add(this.table[rowNumber][i]);
+        }
+        return no.isValid();
+    }
+
+    private boolean isColumnValid(int colNumber) {
+        NumberOfOccurences no = new NumberOfOccurences();
+        for (int i = 0; i < 9; i++)
+        {
+            System.out.println(this.validTable[i][colNumber]);
+            no.add(this.table[i][colNumber]);
         }
         return no.isValid();
     }
