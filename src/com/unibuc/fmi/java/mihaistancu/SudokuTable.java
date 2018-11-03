@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class SudokuTable {
     private int[][] table = new int[9][9];
-    private int[][] validTable = new int[][]{
+    private int[][] uniqueTable = new int[][]{
             {5,3,0, 0,7,0, 0,0,0},
             {6,0,0, 1,9,5, 0,0,0},
             {0,9,8, 0,0,0, 0,6,0},
@@ -17,7 +17,7 @@ public class SudokuTable {
             {0,0,0, 4,1,9, 0,0,5},
             {0,0,0, 0,8,0, 0,7,9}
     };
-    private int[][] invalidTable = new int[][]{
+    private int[][] notUniqueTable = new int[][]{
             {1,0,0, 0,0,0, 0,0,0},
             {0,2,0, 0,0,0, 0,0,0},
             {0,0,3, 0,0,0, 0,0,0},
@@ -61,7 +61,7 @@ public class SudokuTable {
     // Checks if a given box in the table is valid
     private boolean isBoxValid(int boxNumber) {
         int firsti = (boxNumber / 3) * 3;
-        int firstj = boxNumber % 3;
+        int firstj = (boxNumber % 3) * 3;
         int lasti = firsti + 3;
         int lastj  = firstj + 3;
         NumberOfOccurences no = new NumberOfOccurences();
@@ -69,10 +69,24 @@ public class SudokuTable {
         {
             for (int j = firstj; j < lastj; j++)
             {
-                no.add(this.validTable[i][j]);
+                no.add(this.table[i][j]);
             }
         }
         return no.isValid();
+    }
+
+    // Checks if an entire table is valid
+    private boolean isTableValid()
+    {
+        boolean result = true;
+        for (int i = 0; i < 9; i++)
+        {
+            if((!isRowValid(i)) || (!isColumnValid(i)) || (!isBoxValid(i)))
+            {
+                result = false;
+            }
+        }
+        return result;
     }
 
     // Generates random integer in a given range
