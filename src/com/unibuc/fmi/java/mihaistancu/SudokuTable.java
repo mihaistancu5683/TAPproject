@@ -45,9 +45,10 @@ public class SudokuTable {
 
     private boolean placeRandomValueAtRandomPosition() {
         int value = generateRandomIntIntRange(1, 9);
-        int position = generateRandomIntIntRange(0, 8);
+        int line = generateRandomIntIntRange(0, 8);
+        int column = generateRandomIntIntRange(0, 8);
         if(this.verboseMode){
-            System.out.println("Placing the value " + value + " at position " + position + "\n");
+            System.out.println("Placing the value " + value + " at line " + line + " and column " + column + "\n");
         }
         return true;
     }
