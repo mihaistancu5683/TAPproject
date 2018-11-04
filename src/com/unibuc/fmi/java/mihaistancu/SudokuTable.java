@@ -61,7 +61,7 @@ public class SudokuTable {
          };
          SudokuTable st = new SudokuTable();
          st.table = uniqueTable;
-         System.out.println(st.isTableValid());
+         st.print();
     }
 
     // Checks if a given row in the table is valid
@@ -126,6 +126,17 @@ public class SudokuTable {
             }
         }
         return result;
+    }
+
+    public void print() {
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                System.out.print(this.table[i][j] + " ");
+            }
+            System.out.println(this.table[i][8]);
+        }
     }
 
     // Generates random integer in a given range
