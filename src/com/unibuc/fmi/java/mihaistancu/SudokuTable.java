@@ -64,68 +64,73 @@ public class SudokuTable {
          st.print();
     }
 
-    // Checks if a given row in the table is valid
-    private boolean isRowValid(int rowNumber) {
-        NumberOfOccurences no = new NumberOfOccurences();
+    // Checks a given row for a certain value
+    private boolean doesRowHaveValue(int rowNumber, int value) {
         for (int i = 0; i < 9; i++)
         {
-            no.add(this.table[rowNumber][i]);
+            if(this.table[rowNumber][i] == value) {
+                return true;
+            }
         }
-        return no.isValid();
+        return false;
     }
 
-    // Checks if a given column in the table is valid
-    private boolean isColumnValid(int colNumber) {
-        NumberOfOccurences no = new NumberOfOccurences();
+    // Checks a given column for a certain value
+    private boolean doesColumnHaveValue(int colNumber, int value) {
         for (int i = 0; i < 9; i++)
         {
-            no.add(this.table[i][colNumber]);
+            if(this.table[i][colNumber] == value) {
+                return true;
+            }
         }
-        return no.isValid();
+        return false;
     }
 
-    // Checks if a given box in the table is valid
-    private boolean isBoxValid(int boxNumber) {
-        // boxNumber  first i  first j
-        //     0         0        0
-        //     1         0        3
-        //     2         0        6
-        //     3         3        0
-        //     4         3        3
-        //     5         3        6
-        //     6         6        0
-        //     7         6        3
-        //     8         6        6
-        int firsti = (boxNumber / 3) * 3;
-        int firstj = (boxNumber % 3) * 3;
+    // boxNumber  first i  first j
+    //     0         0        0
+    //     1         0        3
+    //     2         0        6
+    //     3         3        0
+    //     4         3        3
+    //     5         3        6
+    //     6         6        0
+    //     7         6        3
+    //     8         6        6
+    private int getFirstRowOfAGivenBoxNumber(int boxNumber) {
+        return (boxNumber / 3) * 3;
+    }
+
+    private int getFirstColumnOfAGivenBoxNumber(int boxNumber) {
+        return (boxNumber % 3) * 3;
+    }
+
+    private int getBoxNumberOfAGivenElement(int i, int j) {
+        return (j/3)+i;
+    }
+
+    // Checks a given box for a certain value
+    private boolean doesBoxHaveValue(int boxNumber, int value) {
+        int firsti = getFirstRowOfAGivenBoxNumber(boxNumber);
+        int firstj = getFirstColumnOfAGivenBoxNumber(boxNumber);
         int lasti = firsti + 3;
         int lastj  = firstj + 3;
-        //System.out.println("first i=" + firsti);
-        //System.out.println("first j=" + firstj);
-        NumberOfOccurences no = new NumberOfOccurences();
         for (int i = firsti; i < lasti; i++)
         {
             for (int j = firstj; j < lastj; j++)
             {
-                //System.out.println("i=" + i + " j=" + j + " val="  +this.solvedTable[i][j]);
-                no.add(this.table[i][j]);
+                if(this.table[i][j] == value) {
+                    return true;
+                }
             }
         }
-        return no.isValid();
+        return false;
     }
 
     // Checks if an entire table is valid
-    private boolean isTableValid()
+    private boolean canWePlace(int row, int col, int value)
     {
-        boolean result = true;
-        for (int i = 0; i < 9; i++)
-        {
-            if((!isRowValid(i)) || (!isColumnValid(i)) || (!isBoxValid(i)))
-            {
-                result = false;
-            }
-        }
-        return result;
+        int box = getBoxNumberOfAGivenElement(row, col);
+        return ((!doesRowHaveValue(row, value)) && (!doesColumnHaveValue(col, value)) && (!doesBoxHaveValue(box, value)));
     }
 
     public void print() {
