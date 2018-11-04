@@ -1,24 +1,6 @@
 package com.unibuc.fmi.java.mihaistancu;
 
-import java.util.Random;
-
 public class SudokuTable {
-    private int[][] table;
-
-    public void SudokuTable() {
-        for (int i = 0; i < 9; i++)
-        {
-            for (int j = 0; j < 9; j++)
-            {
-                this.table[i][j] = 0;
-            }
-        }
-    }
-
-    public void SudokuTable(int[][] newTable) {
-        this.table = newTable;
-    }
-
     public static void main(String[] args) {
         int[][] solvedTable = new int[][]{
                 {6,3,8, 5,2,4, 9,7,1},
