@@ -222,22 +222,4 @@ public class SudokuTable {
             System.out.println(table[i][8]);
         }
     }
-
-    // Generates random integer in a given range
-    private int generateRandomIntIntRange(int min, int max) {
-        Random r = new Random();
-        return r.nextInt((max - min) + 1) + min;
-    }
-
-    private boolean placeRandomValueAtRandomPosition() {
-        int value = generateRandomIntIntRange(1, 9);
-        int line = generateRandomIntIntRange(0, 8);
-        int column = generateRandomIntIntRange(0, 8);
-        return true;
-    }
-
-    public int[][] create() {
-        placeRandomValueAtRandomPosition();
-        return this.table;
-    }
 }
