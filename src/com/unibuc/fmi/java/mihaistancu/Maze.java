@@ -26,6 +26,10 @@ public class Maze {
         return x == exit.getX() && y == exit.getY();
     }
 
+    public boolean isStart(int x, int y) {
+        return x == start.getX() && y == start.getY();
+    }
+
     public boolean isExplored(int row, int col) {
         return visited[row][col];
     }
@@ -111,6 +115,34 @@ public class Maze {
         return Collections.emptyList();
     }
 
+    public void printSolved(List<Coordinate> path) {
+        // Copy the array to a temporary one
+        int h = this.getHeight();
+        int w = this.getWidth();
+        char[][] tempMaze = new char[h][w];
+        for (int row = 0; row < h; row++) {
+            for (int col = 0; col < w; col++) {
+                tempMaze[row][col] = maze[row][col];
+            }
+        }
+
+        // Add path to temporary array
+        for (Coordinate coordinate : path) {
+            if (isStart(coordinate.getX(), coordinate.getY()) || isExit(coordinate.getX(), coordinate.getY())) {
+                continue;
+            }
+            tempMaze[coordinate.getX()][coordinate.getY()] = '.';
+        }
+
+        // Print temporary array
+        for (int row = 0; row < getHeight(); row++) {
+            for (int col = 0; col < getWidth(); col++) {
+                System.out.print(tempMaze[row][col]);
+            }
+            System.out.println();
+        }
+    }
+
     public static void main(String args[]) {
         char[][] mazeArray = new char[][]{
                 {'S', ' ', '#', '#', '#', '#', '#', '#', '#', '#'},
@@ -128,5 +160,6 @@ public class Maze {
         };
         Maze maze = new Maze(mazeArray);
         List<Coordinate> path = maze.solve();
+        maze.printSolved(path);
     }
 }
