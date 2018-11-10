@@ -24,14 +24,14 @@ public class MazeSolverPanel extends JPanel {
 
 
     public MazeSolverPanel() {
-        setLayout(new BorderLayout());
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Object columnNames[] = new Object[mazeCols];
         for(int i = 0; i < mazeCols; i++) {
             columnNames[i] = i;
         }
-        JTable table = new JTable(defaultMaze, columnNames);
-        add(table, BorderLayout.NORTH);
         JButton btnSolveMaze = new JButton("Solve Maze");
-        add(btnSolveMaze, BorderLayout.SOUTH);
+        add(btnSolveMaze, BoxLayout.X_AXIS);
+        JTable table = new JTable(defaultMaze, columnNames);
+        add(table, BoxLayout.Y_AXIS);
     }
 }
