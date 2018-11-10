@@ -14,8 +14,10 @@ public class MainWindow extends JFrame {
 
         MazeSolverPanel panelMazeSolver = new MazeSolverPanel();
         MergeSortPanel panelMergeSort = new MergeSortPanel();
+        SudokuSolverPanel panelSudokuSolver = new SudokuSolverPanel();
         tabbedPane.addTab("Maze Solver", panelMazeSolver);
         tabbedPane.addTab("Merge Sort", panelMergeSort);
+        tabbedPane.addTab("Solve Sudoku", panelSudokuSolver);
 
         setSize(800,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,7 +1,6 @@
 package com.unibuc.fmi.java.mihaistancu;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class MazeSolverPanel extends JPanel {
     private int mazeRows = 12;
