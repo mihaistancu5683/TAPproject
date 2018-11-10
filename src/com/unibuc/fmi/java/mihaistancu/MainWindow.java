@@ -15,6 +15,7 @@ public class MainWindow extends JFrame {
         MazeSolverPanel panelMazeSolver = new MazeSolverPanel();
         MergeSortPanel panelMergeSort = new MergeSortPanel();
         tabbedPane.addTab("Maze Solver", panelMazeSolver);
+        tabbedPane.addTab("Merge Sort", panelMergeSort);
 
         setSize(800,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
