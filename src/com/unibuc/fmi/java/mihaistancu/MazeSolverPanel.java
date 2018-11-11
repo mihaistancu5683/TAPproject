@@ -1,6 +1,7 @@
 package com.unibuc.fmi.java.mihaistancu;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MazeSolverPanel extends JPanel {
     private int mazeRows = 12;
@@ -23,14 +24,14 @@ public class MazeSolverPanel extends JPanel {
 
 
     public MazeSolverPanel() {
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setLayout(new BorderLayout());
         Object columnNames[] = new Object[mazeCols];
         for(int i = 0; i < mazeCols; i++) {
             columnNames[i] = i;
         }
-        JButton btnSolveMaze = new JButton("Solve Maze");
-        add(btnSolveMaze, BoxLayout.X_AXIS);
+        MazeSolverButtons msb = new MazeSolverButtons();
+        add(msb, BorderLayout.NORTH);
         JTable table = new JTable(defaultMaze, columnNames);
-        add(table, BoxLayout.Y_AXIS);
+        add(table, BorderLayout.CENTER);
     }
 }

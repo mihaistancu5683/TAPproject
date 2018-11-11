@@ -1,22 +1,19 @@
 package com.unibuc.fmi.java.mihaistancu;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MergeSortPanel extends JPanel {
     private int arrayItems = 10;
 
     public MergeSortPanel() {
 
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setLayout(new BorderLayout());
         MergeSortButtons msb = new MergeSortButtons();
 
-        add(msb, BoxLayout.X_AXIS);
+        add(msb, BorderLayout.NORTH);
 
-        for (int i = 0; i < arrayItems; i++) {
-            JTextField txtField = new JTextField(i);
-            txtField.setSize(5, 5);
-            add(txtField, BoxLayout.Y_AXIS);
-            setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-        }
+        JTextField txtField = new JTextField("Text");
+        add(txtField, BorderLayout.CENTER);
     }
 }

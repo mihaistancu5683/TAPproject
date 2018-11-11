@@ -13,9 +13,9 @@ public class MergeSortButtons extends JPanel {
         add(sortMergeSort, FlowLayout.LEFT);
 
         JButton delMergeSort = new JButton("Delete");
-        add(delMergeSort, FlowLayout.LEFT);
+        add(delMergeSort, FlowLayout.CENTER);
 
         JButton addMergeSort = new JButton("Add");
-        add(addMergeSort, FlowLayout.LEFT);
+        add(addMergeSort, FlowLayout.RIGHT);
     }
 }
