@@ -1,6 +1,7 @@
 package com.unibuc.fmi.java.mihaistancu;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class SudokuSolverPanel extends JPanel {
     private static Object[][] defaultMaze =  new Object[][]{
@@ -19,14 +20,14 @@ public class SudokuSolverPanel extends JPanel {
 
 
     public SudokuSolverPanel() {
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setLayout(new BorderLayout());
         Object columnNames[] = new Object[9];
         for(int i = 0; i < 9; i++) {
             columnNames[i] = i;
         }
-        JButton btnSolveMaze = new JButton("Solve Sudoku");
-        add(btnSolveMaze, BoxLayout.X_AXIS);
+        SudokuSolverButtons ssb = new SudokuSolverButtons();
+        add(ssb, BorderLayout.NORTH);
         JTable table = new JTable(defaultMaze, columnNames);
-        add(table, BoxLayout.Y_AXIS);
+        add(table, BorderLayout.CENTER);
     }
 }
