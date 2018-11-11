@@ -115,7 +115,7 @@ public class Maze {
         return Collections.emptyList();
     }
 
-    public void printSolved(List<Coordinate> path) {
+    public char[][] getSolvedMaze(List<Coordinate> path) {
         // Copy the array to a temporary one
         int h = this.getHeight();
         int w = this.getWidth();
@@ -134,32 +134,6 @@ public class Maze {
             tempMaze[coordinate.getX()][coordinate.getY()] = '.';
         }
 
-        // Print temporary array
-        for (int row = 0; row < getHeight(); row++) {
-            for (int col = 0; col < getWidth(); col++) {
-                System.out.print(tempMaze[row][col]);
-            }
-            System.out.println();
-        }
-    }
-
-    public static void main(String args[]) {
-        char[][] mazeArray = new char[][]{
-                {'S', ' ', '#', '#', '#', '#', '#', '#', '#', '#'},
-                {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-                {'#', ' ', '#', '#', '#', ' ', '#', '#', ' ', '#'},
-                {'#', ' ', '#', ' ', ' ', ' ', ' ', '#', ' ', '#'},
-                {'#', ' ', '#', ' ', ' ', '#', ' ', '#', ' ', '#'},
-                {'#', ' ', '#', '#', ' ', '#', '#', '#', '#', '#'},
-                {'#', ' ', '#', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
-                {'#', ' ', '#', ' ', '#', ' ', ' ', '#', ' ', '#'},
-                {'#', '#', '#', '#', '#', ' ', '#', '#', '#', '#'},
-                {'#', ' ', ' ', ' ', '#', ' ', ' ', ' ', ' ', 'E'},
-                {'#', ' ', '#', ' ', ' ', ' ', ' ', '#', ' ', '#'},
-                {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#'}
-        };
-        Maze maze = new Maze(mazeArray);
-        List<Coordinate> path = maze.solve();
-        maze.printSolved(path);
+        return tempMaze;
     }
 }

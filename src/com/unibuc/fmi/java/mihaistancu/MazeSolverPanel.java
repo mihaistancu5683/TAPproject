@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MazeSolverPanel extends JPanel {
-    private int mazeRows = 12;
-    private int mazeCols = 10;
+    private MazeSolverButtons msb;
+    private JTable table;
 
     private static Object[][] defaultMaze =  new Object[][]{
             {'S', ' ', '#', '#', '#', '#', '#', '#', '#', '#'},
@@ -22,16 +22,16 @@ public class MazeSolverPanel extends JPanel {
             {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#'}
     };
 
-
     public MazeSolverPanel() {
         setLayout(new BorderLayout());
-        Object columnNames[] = new Object[mazeCols];
-        for(int i = 0; i < mazeCols; i++) {
+        int cols = defaultMaze[0].length;
+        Object columnNames[] = new Object[cols];
+        for(int i = 0; i < cols; i++) {
             columnNames[i] = i;
         }
-        MazeSolverButtons msb = new MazeSolverButtons();
+        table = new JTable(defaultMaze, columnNames);
+        msb = new MazeSolverButtons(table);
         add(msb, BorderLayout.NORTH);
-        JTable table = new JTable(defaultMaze, columnNames);
         add(table, BorderLayout.CENTER);
     }
 }
