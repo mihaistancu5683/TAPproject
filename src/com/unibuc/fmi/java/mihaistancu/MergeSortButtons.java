@@ -7,7 +7,7 @@ public class MergeSortButtons extends JPanel {
     private int arrayItems = 5;
 
     public MergeSortButtons() {
-        setLayout(new FlowLayout());
+        setLayout(new FlowLayout(FlowLayout.LEFT));
 
         JButton sortMergeSort = new JButton("Sort");
         add(sortMergeSort, FlowLayout.LEFT);

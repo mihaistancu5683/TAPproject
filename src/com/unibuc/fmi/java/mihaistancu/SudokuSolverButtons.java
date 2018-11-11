@@ -7,7 +7,7 @@ public class SudokuSolverButtons extends JPanel {
     private int arrayItems = 5;
 
     public SudokuSolverButtons() {
-        setLayout(new FlowLayout());
+        setLayout(new FlowLayout(FlowLayout.LEFT));
 
         JButton btnSolveSudoku = new JButton("Solve Sudoku");
         add(btnSolveSudoku, FlowLayout.LEFT);

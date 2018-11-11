@@ -6,7 +6,7 @@ import java.awt.*;
 public class MazeSolverButtons extends JPanel {
 
     public MazeSolverButtons() {
-        setLayout(new FlowLayout());
+        setLayout(new FlowLayout(FlowLayout.LEFT));
 
         JButton btnSolveMaze = new JButton("Solve Maze");
         add(btnSolveMaze, FlowLayout.LEFT);
