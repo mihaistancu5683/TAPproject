@@ -27,7 +27,7 @@ public class MazeSolverButtons extends JPanel implements ActionListener  {
             char[][] mazeArray = new char[rows][cols];
             for (int i = 0; i < rows; i++){
                 for (int j = 0; j < cols; j++) {
-                    mazeArray[i][j] = (char) table.getValueAt(i, j);
+                    mazeArray[i][j] = table.getValueAt(i, j).toString().charAt(0);
                 }
             }
 
