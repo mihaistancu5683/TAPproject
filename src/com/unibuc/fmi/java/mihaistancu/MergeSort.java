@@ -1,18 +1,16 @@
 package com.unibuc.fmi.java.mihaistancu;
 
 public class MergeSort {
-    static void print(int arr[])
-    {
-        int n = arr.length;
-        for (int i = 0; i < n; i++)
-            System.out.print(arr[i] + " ");
-        System.out.println();
+    private int arr[];
+
+    public MergeSort(int[] arr){
+        this.arr = arr;
     }
 
     // Merges two subarrays of arr[].
     // First subarray is arr[left..middle]
     // Second subarray is arr[middle+1..right]
-    public static void merge(int arr[], int left, int middle, int right)
+    public void merge(int left, int middle, int right)
     {
         // Find sizes of two subarrays to be merged
         int n1 = middle - left + 1;
@@ -68,7 +66,7 @@ public class MergeSort {
     }
 
     // Main MergeSort function
-    public static void sort(int arr[], int left, int right)
+    public void sort(int left, int right)
     {
         if (left < right)
         {
@@ -76,23 +74,11 @@ public class MergeSort {
             int middle = (left + right)/2;
 
             // Sort first and second halves
-            sort(arr, left, middle);
-            sort(arr , middle + 1, right);
+            sort(left, middle);
+            sort(middle + 1, right);
 
             // Merge the sorted halves
-            merge(arr, left, middle, right);
+            merge(left, middle, right);
         }
-    }
-
-    public static void main(String args[])
-    {
-        int arr[] = {10, 12, 11, 13, 5, 6, 7, 4};
-        System.out.println("Unsorted array:");
-        print(arr);
-
-        sort(arr, 0, arr.length - 1);
-
-        System.out.println("Sorted array:");
-        print(arr);
     }
 }

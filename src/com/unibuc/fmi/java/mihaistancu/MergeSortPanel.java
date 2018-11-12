@@ -4,16 +4,18 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MergeSortPanel extends JPanel {
-    private int arrayItems = 10;
+    private JTable table;
+    Object[][] defaultArray = {{10}, {12}, {11}, {13}, {5}, {6}, {7}, {4}};
 
     public MergeSortPanel() {
 
         setLayout(new BorderLayout());
-        MergeSortButtons msb = new MergeSortButtons();
+
+        Object[][] columnNames = new Object[][] {{0}};
+        table = new JTable(defaultArray, columnNames);
+        MergeSortButtons msb = new MergeSortButtons(table);
 
         add(msb, BorderLayout.NORTH);
-
-        JTextField txtField = new JTextField("Text");
-        add(txtField, BorderLayout.CENTER);
+        add(table, BorderLayout.CENTER);
     }
 }
