@@ -1,31 +1,6 @@
 package com.unibuc.fmi.java.mihaistancu;
 
 public class SudokuTable {
-    public static void main(String[] args) {
-        int[][] uniqueTable = new int[][]{
-                {5,3,0, 0,7,0, 0,0,0},
-                {6,0,0, 1,9,5, 0,0,0},
-                {0,9,8, 0,0,0, 0,6,0},
-
-                {8,0,0, 0,6,0, 0,0,3},
-                {4,0,0, 8,0,3, 0,0,1},
-                {7,0,0, 0,2,0, 0,0,6},
-
-                {0,6,0, 0,0,0, 2,8,0},
-                {0,0,0, 4,1,9, 0,0,5},
-                {0,0,0, 0,8,0, 0,7,9}
-        };
-
-        int n = uniqueTable.length;
-
-        if(solve(uniqueTable, n)) {
-            print(uniqueTable);
-        }
-        else {
-            System.out.println("There is no solution to the table!");
-        }
-    }
-
     public static boolean solve(int[][] table, int n){
         int nextEmptyRow = -1;
         int nextEmptyCol = -1;
