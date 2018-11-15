@@ -1,6 +1,7 @@
 package com.unibuc.fmi.java.mihaistancu;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,9 +9,11 @@ import java.awt.event.ActionListener;
 public class MergeSortButtons extends JPanel implements ActionListener {
     private JButton sortMergeSort, delMergeSort, addMergeSort;
     private JTable table;
+    private DefaultTableModel dtm;
 
-    public MergeSortButtons(JTable table) {
+    public MergeSortButtons(JTable table, DefaultTableModel dtm) {
         this.table=table;
+        this.dtm=dtm;
         setLayout(new FlowLayout(FlowLayout.LEFT));
 
         sortMergeSort = new JButton("Sort");
@@ -21,6 +24,7 @@ public class MergeSortButtons extends JPanel implements ActionListener {
         add(delMergeSort, FlowLayout.CENTER);
 
         addMergeSort = new JButton("Add");
+        addMergeSort.addActionListener(this);
         add(addMergeSort, FlowLayout.RIGHT);
     }
 
@@ -39,6 +43,11 @@ public class MergeSortButtons extends JPanel implements ActionListener {
             for (int i = 0; i < rows; i++){
                 table.setValueAt(arr[i], i, 0);
             }
+        }
+        else if (clicked == addMergeSort) {
+            int s = dtm.getRowCount();
+            dtm.insertRow(s, new Object[] {0});
+            table.setModel(dtm);
         }
     }
 }
