@@ -142,15 +142,4 @@ public class SudokuTable {
         int box = getBoxNumberOfAGivenElement(row, col);
         return ((!doesRowHaveValue(table, row, value)) && (!doesColumnHaveValue(table, col, value)) && (!doesBoxHaveValue(table, box, value)));
     }
-
-    public static void print(int[][] table) {
-        for (int i = 0; i < 9; i++)
-        {
-            for (int j = 0; j < 8; j++)
-            {
-                System.out.print(table[i][j] + " ");
-            }
-            System.out.println(table[i][8]);
-        }
-    }
 }
