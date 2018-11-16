@@ -65,6 +65,7 @@ public class Maze {
         }
     }
 
+    // Iterates through the linked list and returns the path
     private List<Coordinate> backtrackPath(Coordinate cur) {
         List<Coordinate> path = new ArrayList<>();
         Coordinate iter = cur;
@@ -77,6 +78,7 @@ public class Maze {
         return path;
     }
 
+    // BFS Algorithm
     public List<Coordinate> solve() {
         LinkedList<Coordinate> nextToVisit = new LinkedList<>();
         // Get entry point, mark it as visited
